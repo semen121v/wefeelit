@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:23:42 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/01 15:40:57 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/01 17:24:32 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,57 @@ t_mas	*validTetriminos3(char *str)
 	return (first);
 }
 
+int checklinks(char *str, int cnt)
+{
+	int links;
+
+	links = 0;
+	if ((cnt % 20) > 3)
+		if ((str[cnt-5]) &&  ((str[cnt-5]) == '#'))
+			links++;	
+	if ((str[cnt-1]) &&  ((str[cnt-1]) == '#'))
+		links++;
+
+	if ((str[cnt+1]) &&  ((str[cnt+1]) == '#'))
+		links++;
+
+	if ((cnt % 20) < 15)
+		if ((str[cnt+5]) &&  ((str[cnt+5]) == '#'))
+			links++;
+	return(links);
+}
+
+
+int	validTetriminos4(char *str)
+{
+	int links;
+	int cnt;
+	int bricks;
+
+	bricks = 0;
+	links = 0;
+	cnt = 0;
+	//printf("links = %d\n", links);
+	while (str[cnt] != '\0')
+	{
+		while (bricks != 20)
+		{
+			if (str[cnt] == '#')
+				links =  links + checklinks(str, cnt); 
+			cnt++;
+			bricks++;
+		}
+		printf("cnt = %d\n", cnt);
+		printf("links = %d\n", links);
+		if (links != 6 && links != 8)
+			return(-1);
+		links = 0;
+		bricks = 0;
+		cnt++;
+	}
+	return(1);
+}
+
 int main (int argc, char **argv)
 {
 	int i;
@@ -168,10 +219,9 @@ int main (int argc, char **argv)
 		printf("%d",i);
 		if ( i == 1)
 		{
-			i = validTetriminos2(str);
+			i = validTetriminos4(str);
 			printf("%d",i);
 		}
-		//printf ("%c\n%d", ptr->mas[0][0],i);
 	}
 	return (0);
 }
