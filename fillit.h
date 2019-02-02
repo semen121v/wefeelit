@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:49:17 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/01 17:56:40 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/02 17:21:30 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ int         validTetriminos1(char *str);
 int         validTetriminos2(char *str);
 int         checklinks(char *str, int cnt);
 int         validTetriminos4(char *str);
+t_mas       *Prepare(char *str);
+void        Newmas(char *str, t_mas *mas, int i, int j);
+int         ft_readlen(char *fd);
+char        *ft_read(char *fd);
 
 
 #endif
