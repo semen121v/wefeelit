@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:23:42 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/01 18:46:01 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/02 16:33:14 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,35 @@ char *ft_read(char *fd)
 	return (str);
 }
 
+void	Newmas(char *str, t_mas *mas, int i, int j)
+{
+	while (*str != '\0')
+	{
+		while (j != 4 && *str != '\n' && *str != '\0')	
+		{	
+			mas->mas[j][i] = *str;
+			i++;
+			str++;	
+		}
+		if (*str == '\n' && i == 4)
+		{
+			i = 0;
+			j++;
+			str++;
+		}
+		else if (*str != '\0')
+		{
+			j = 0;
+			i = 0;
+			mas->next = (t_mas*)malloc(sizeof(t_mas));
+			mas->next->prev = mas;
+			mas = mas->next;
+			str++;			
+		}
+	}	
+	mas->next = NULL;
+}
+
 t_mas	*validTetriminos3(char *str)
 {
 	t_mas	*mas;
@@ -64,34 +93,9 @@ t_mas	*validTetriminos3(char *str)
 	j = 0;
 	if ((mas = (t_mas*)malloc(sizeof(t_mas))) == NULL)
 		return (NULL);
+	mas->prev = NULL;
 	first = mas;
-	while (*str != '\0')
-		{
-			while (j != 4 && *str != '\n' && *str != '\0')
-			{	
-				mas->mas[j][i] = *str;
-				printf ("%c", mas->mas[j][i]);
-				i++;
-				str++;	
-			}
-			if (*str == '\n' && i == 4)
-			{
-				i = 0;
-				j++;
-				str++;
-				printf("\n");
-			}
-			else  
-			{
-					j = 0;
-					i = 0;
-					mas->next = (t_mas*)malloc(sizeof(t_mas));
-					mas = mas->next;
-					str++;			
-					printf("\n");
-			}
-		}
-	mas->next = NULL;
+	Newmas(str, mas, i, j);
 	return (first);
 }
 
@@ -100,6 +104,7 @@ int main (int argc, char **argv)
 	int i;
 	char *str;
 	t_mas *ptr;
+	int j;
 
 	i = 0;
 	ptr = NULL;
@@ -116,5 +121,27 @@ int main (int argc, char **argv)
 			ptr = validTetriminos3(str);
 		}
 	}
+	printf("\n");
+	i = 0;
+	j = 0;
+	while (ptr)
+	{
+		while (j != 4)
+		{
+			while (i != 4)
+			{	
+				printf ("%c", ptr->mas[j][i]);
+				i++;	
+			}
+			i = 0;
+			j++;
+			printf("\n");
+		}
+		j = 0;
+		i = 0;
+		ptr = ptr->next;		
+		printf("\n");
+	}
+	//printf("\n%d\n",i);
 	return (0);
 }
