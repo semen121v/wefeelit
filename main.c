@@ -6,18 +6,48 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:23:42 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/02 17:22:55 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/02 19:31:35 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+int ft_sqrt(int i)
+{
+	int a;
+	
+	a = 0;
+	while ((a * a) <= i)
+	{
+		if((a * a) == i)
+			return (i);
+		a++;
+	}
+	return(a);
+}
+
+int		count(t_mas *ptr)
+{
+	int		i;
+
+	i = 0;
+	while (ptr)
+	{
+		i++;
+		ptr = ptr->next;		
+	}
+	return (ft_sqrt(i * 4));
+}
+
+
 int main (int argc, char **argv)
 {
 	int i;
+	int j;
 	char *str;
 	t_mas *ptr;
-	int j;
+	t_map	*map;
+	int	c;
 
 	i = 0;
 	ptr = NULL;
@@ -31,30 +61,26 @@ int main (int argc, char **argv)
 		{
 			i = validTetriminos4(str);
 			if (i == 1)
-			ptr = Prepare(str);
+				if (validTetriminos2(str) == 1)
+				ptr = Prepare(str);
 		}
 	}
-	printf("\n");
 	i = 0;
 	j = 0;
-	while (ptr)
+	c =count(ptr);
+	map = ft_create_map(c);
+	while (j != c)
 	{
-		while (j != 4)
+		while ( i != c)
 		{
-			while (i != 4)
-			{	
-				printf ("%c", ptr->mas[j][i]);
-				i++;	
-			}
-			i = 0;
-			j++;
-			printf("\n");
+			map->mas[j][i] = '#';
+			printf("%c", map->mas[j][i]);
+			i++;
 		}
-		j = 0;
 		i = 0;
-		ptr = ptr->next;		
-		printf("\n");
+		j++;
+		printf ("\n");
 	}
-	//printf("\n%d\n",i);
+
 	return (0);
 }
