@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:23:42 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/02 19:31:35 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/08 15:42:47 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int main (int argc, char **argv)
 		str = ft_read(argv[1]);
 		printf ("%s\n\n", str);
 		i = validTetriminos1(str);
-		printf("%d\n",i);
+		//printf("%d\n",i);
 		if ( i == 1)
 		{
 			i = validTetriminos4(str);
@@ -73,7 +73,7 @@ int main (int argc, char **argv)
 	{
 		while ( i != c)
 		{
-			map->mas[j][i] = '#';
+			map->mas[j][i] = '.';
 			printf("%c", map->mas[j][i]);
 			i++;
 		}
@@ -82,5 +82,7 @@ int main (int argc, char **argv)
 		printf ("\n");
 	}
 
+	c = variationValid(2);
+	printf("\n%d",c);
 	return (0);
 }

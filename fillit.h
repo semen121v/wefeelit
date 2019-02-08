@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:49:17 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/02 19:31:45 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/08 14:40:13 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void        Newmas(char *str, t_mas *mas, int i, int j);
 int         ft_readlen(char *fd);
 char        *ft_read(char *fd);
 t_map       *ft_create_map(int i);
+int     variationValid(int i);
 
 
 #endif
