@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 17:39:41 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/08 15:43:26 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/12 18:46:15 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ t_map       *ft_create_map(int i)
     return (map);
 }
 
-int     variationValid(int k)
+int     variationValid(int k, int m)
 {
-    t_map	*map;
     int     i;
     int     j;
     int     c;
@@ -41,9 +40,9 @@ int     variationValid(int k)
     c = 0;
     i = k - 1;
     j = 1;
-    while (j != 3)
+    while (j != m)
     {
-        while (i != 3)
+        while (i != m)
         {
             c++;
             i++;
@@ -52,4 +51,9 @@ int     variationValid(int k)
         j++;
     }
     return(c);
+}
+
+t_line  *ft_create_line(int c, int m, t_mas *mas)
+{
+    t_line  *line;
 }

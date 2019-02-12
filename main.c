@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:23:42 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/08 15:42:47 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/12 19:36:43 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ int main (int argc, char **argv)
 {
 	int i;
 	int j;
+	//int m;
 	char *str;
 	t_mas *ptr;
 	t_map	*map;
+	t_coordinates	*coordinates;
 	int	c;
 
 	i = 0;
@@ -81,8 +83,30 @@ int main (int argc, char **argv)
 		j++;
 		printf ("\n");
 	}
+	printf ("\n");
+	coordinates = creat_coordinates(ptr);
 
-	c = variationValid(2);
+
+	i = 0;
+	j = 0;
+	while (coordinates)
+	{
+		while (j != 4)
+		{
+			while ( i != 2)
+			{
+				printf("%d", coordinates->coordinate[j][i]);
+				i++;
+			}
+			i = 0;
+			j++;
+		}
+		coordinates = coordinates->next;
+		j = 0;
+		printf ("\n");
+	}
+
+	c = variationValid(2, c);
 	printf("\n%d",c);
 	return (0);
 }
