@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 17:33:27 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/11 21:33:57 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/13 20:11:38 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int checklinks(char *str, int cnt)
 }
 
 
-int	validTetriminos4(char *str)
+int	validTetriminos3(char *str)
 {
 	int links;
 	int cnt;

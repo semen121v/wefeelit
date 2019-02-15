@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 17:39:41 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/12 18:46:15 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/13 20:11:44 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,4 @@ int     variationValid(int k, int m)
         j++;
     }
     return(c);
-}
-
-t_line  *ft_create_line(int c, int m, t_mas *mas)
-{
-    t_line  *line;
 }

@@ -6,14 +6,14 @@
 #    By: fshade <fshade@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/23 15:33:21 by ldonnis           #+#    #+#              #
-#    Updated: 2019/02/12 19:37:33 by fshade           ###   ########.fr        #
+#    Updated: 2019/02/15 16:24:42 by fshade           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = fillit
 FLAG = -Wall -Wextra -Werror -g -ggdb
-SRC = main.c fillit.c validTetriminos.c Newmas.c map.c coordinaes.c 
+SRC = main.c fillit.c validTetriminos.c Newmas.c map.c coordinaes.c readfile.c newtetrimo.c
 OBJ = $(SRC:.c=.o)
 LIB = libft.a
 
@@ -26,8 +26,8 @@ $(NAME): $(LIB) $(OBJ)
 $(LIB):
 	$(MAKE) -C libft/ fclean && make -C libft/ 
 
-main.o: main.c $(HEADER)
-	clang -Wall -Wextra -Werror -I libft/includes -o main.o -c main.c -g 
+%.o: %.c $(HEADER)
+	clang -Wall -Wextra -Werror -I libft/includes -o $@ -c $< -g 
 	
 clean:
 	@rm -f $(OBJ)
