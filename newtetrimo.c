@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 19:55:33 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/15 17:12:06 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/15 17:50:31 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ void static createnewtetrimo2(t_map *newtetrimo, t_coordinates *dot, int i, int 
 
 void static createnewtetrimo1(t_map *newtetrimo,    int i, int j)
 {
-    if ((newtetrimo->mas=(char**)malloc(sizeof(char*) * j)) == NULL)
+    if ((newtetrimo->mas=(char**)malloc(sizeof(char*) * (j + 1))) == NULL)
         return;
+    newtetrimo->mas[j] = NULL;
     while (j != 0)
     {
         if ((newtetrimo->mas[j - 1]=(char*)malloc(sizeof(char*) * i)) == NULL)

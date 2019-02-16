@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 17:33:27 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/13 20:11:38 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/16 15:37:57 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,23 @@ int		validTetriminos1(char *str)
 	
 	i = 19;
 	while (str[i] != '\0')
-		{
-			if (str[i + 1] == '\n' && str[i + 1] != '\0')
-				i = i + 2;
-			else
-				return (-1);
-			i = i + 19;		
-		}
-	return (1);
+	{
+		if (str[i] == '\n')
+			i++;
+		else
+			return (-1);
+		if (str[i] == '\n')
+			i++;
+		else if (str[i] != '\0')
+			return (-1);
+		else if (str[i] == '\0')
+			return (1);
+		if (str[i] == '\n' || str[i] == '\0')
+			return (-1);
+		else
+			i = i + 19;
+	}
+	return (-1);
 }
 
 int validTetriminos2(char *str)
