@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:23:42 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/16 15:39:18 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/16 20:02:25 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int ft_sqrt(int i)
 	while ((a * a) <= i)
 	{
 		if((a * a) == i)
-			return (i);
+			return (a);
 		a++;
 	}
 	return(a);
@@ -47,12 +47,14 @@ int main (int argc, char **argv)
 	//int m;
 	char *str;
 	t_mas *ptr;
-	//t_map	*map;
-	//t_coordinates	*first;
-	//t_coordinates	*dot;
-	//int	c;
-	//    char	**mas;
-   // char    *mas1;
+	t_map	*map;
+	t_coordinates	*first;
+	t_coordinates	*first1;
+	t_coordinates	*size;
+	t_coordinates	*dot;
+	int	c;
+	char	**mas;
+    char    *mas1;
 
 	i = 0;
 	ptr = NULL;
@@ -63,10 +65,7 @@ int main (int argc, char **argv)
 					ft_putstr("error\n");
 					return (0);
 		}
-
-		//printf ("%s\n\n", str);
 		i = validTetriminos1(str);
-		//printf("%d\n",i);
 		if (i == 1)
 		{
 			i = validTetriminos3(str);
@@ -76,12 +75,14 @@ int main (int argc, char **argv)
 					ptr = Prepare(str);
 				else
 				{
+					printf("%d\n",i);
 					ft_putstr("error\n");
 					return (0);
 				}
 			}
 			else
 				{
+					printf("%d\n",i);
 					ft_putstr("error\n");
 					return (0);
 				}
@@ -92,64 +93,33 @@ int main (int argc, char **argv)
 					return (0);
 				}
 	}
-	// i = 0;
-	// j = 0;
-	// c =count(ptr);
-	// map = ft_create_map(c);
-	// while (j != c)
-	// {
-	// 	while ( i != c)
-	// 	{
-	// 		map->mas[j][i] = '.';
-	// 		printf("%c", map->mas[j][i]);
-	// 		i++;
-	// 	}
-	// 	i = 0;
-	// 	j++;
-	// 	printf ("\n");
-	// }
-	// printf ("\n");
-	// dot = creat_coordinates(ptr);
-	// first = dot;
+	c =count(ptr);
+	printf("\n%d\n",c);
+	map = ft_create_map(c);
+	dot =  creat_coordinates(ptr);
+	size = creat_size(ptr);
+	first = dot;
+	first1 = size;
+	map = newtetrimo(first, first1);
+	while (map)
+	{
+		mas = map->mas;
+		while (*mas)
+    	{
+    		mas1 = *mas;
+        	while(*mas1)
+        	{   
+				printf("%c", *mas1);
+            	mas1++;
+        	}
+			printf("\n");
+        mas++;
+    	}
+		printf("\n");
+		map = map->next;
+	}
 
-	// i = 0;
-	// j = 0;
-	// while (dot)
-	// {
-	// 	while (j != 4)
-	// 	{
-	// 		while ( i != 2)
-	// 		{
-	// 			printf("%d", dot->dot[j][i]);
-	// 			i++;
-	// 		}
-	// 		i = 0;
-	// 		j++;
-	// 	}
-	// 	dot = dot->next;
-	// 	j = 0;
-	// 	printf ("\n");
-	// }
-	// map = newtetrimo(first);
-	// while (map)
-	// {
-	// 	mas = map->mas;
-	// 	while (*mas)
-    // 	{
-    // 		mas1 = *mas;
-    //     	while(*mas1)
-    //     	{   
-	// 			printf("%c", *mas1);
-    //         	mas1++;
-    //     	}
-	// 		printf("\n");
-    //     mas++;
-    // 	}
-	// 	printf("\n");
-	// 	map = map->next;
-	// }
-
-	// c = variationValid(2, c);
-	// printf("\n%d",c);
+	c = variationValid(2, c);
+	printf("\n%d",c);
 	 return (0);
 }
