@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 17:39:41 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/16 20:07:46 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/18 13:20:44 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,34 @@ t_map       *ft_create_map(int i)
         j++;
     }
     return (map);
+}
+
+
+static int ft_sqrt(int i)
+{
+	int a;
+	
+	a = 0;
+	while ((a * a) <= i)
+	{
+		if((a * a) == i)
+			return (a);
+		a++;
+	}
+	return(a);
+}
+
+int     count(t_mas *ptr)
+{
+	int		i;
+
+	i = 0;
+	while (ptr)
+	{
+		i++;
+		ptr = ptr->next;		
+	}
+	return (ft_sqrt(i * 4));
 }
 
 int     variationValid(int k, int m)

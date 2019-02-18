@@ -6,47 +6,14 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:23:42 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/16 20:02:25 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/18 14:34:48 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int ft_sqrt(int i)
+int fillit(t_mas *ptr)
 {
-	int a;
-	
-	a = 0;
-	while ((a * a) <= i)
-	{
-		if((a * a) == i)
-			return (a);
-		a++;
-	}
-	return(a);
-}
-
-int		count(t_mas *ptr)
-{
-	int		i;
-
-	i = 0;
-	while (ptr)
-	{
-		i++;
-		ptr = ptr->next;		
-	}
-	return (ft_sqrt(i * 4));
-}
-
-
-int main (int argc, char **argv)
-{
-	int i;
-	//int j;
-	//int m;
-	char *str;
-	t_mas *ptr;
 	t_map	*map;
 	t_coordinates	*first;
 	t_coordinates	*first1;
@@ -56,43 +23,6 @@ int main (int argc, char **argv)
 	char	**mas;
     char    *mas1;
 
-	i = 0;
-	ptr = NULL;
-	if (argc == 2)
-	{
-		if ((str = ft_read(argv[1])) == NULL)
-		{
-					ft_putstr("error\n");
-					return (0);
-		}
-		i = validTetriminos1(str);
-		if (i == 1)
-		{
-			i = validTetriminos3(str);
-			if (i == 1)
-			{
-				if (validTetriminos2(str) == 1)
-					ptr = Prepare(str);
-				else
-				{
-					printf("%d\n",i);
-					ft_putstr("error\n");
-					return (0);
-				}
-			}
-			else
-				{
-					printf("%d\n",i);
-					ft_putstr("error\n");
-					return (0);
-				}
-		}
-		else
-		{
-					ft_putstr("error\n");
-					return (0);
-				}
-	}
 	c =count(ptr);
 	printf("\n%d\n",c);
 	map = ft_create_map(c);
@@ -120,6 +50,6 @@ int main (int argc, char **argv)
 	}
 
 	c = variationValid(2, c);
-	printf("\n%d",c);
-	 return (0);
+	printf("%d\n",c);
+	return (1);
 }

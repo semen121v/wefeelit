@@ -6,7 +6,7 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 16:49:17 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/16 19:24:37 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/18 14:31:03 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct	s_coordinates
 }				t_coordinates;
 
 
-
+int             fillit(t_mas *ptr);
 int             validTetriminos1(char *str);
 int             validTetriminos2(char *str);
 int             checklinks(char *str, int cnt, int j);
@@ -52,6 +52,7 @@ int             variationValid(int i, int m);
 t_coordinates   *creat_coordinates(t_mas    *ptr);
 t_map           *newtetrimo(t_coordinates *dot, t_coordinates *size);
 t_coordinates   *creat_size(t_mas    *ptr);
+int		        count(t_mas *ptr);
 
 
 #endif
