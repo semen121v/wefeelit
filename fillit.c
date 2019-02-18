@@ -6,78 +6,65 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:04:29 by ldonnis           #+#    #+#             */
-/*   Updated: 2019/02/18 14:33:48 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/18 19:10:49 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static t_mas *checkTetrimisions2(int i, char *str)
-{	
+static t_mas	*check_tetrimisions2(int i, char *str)
+{
 	t_mas *ptr;
-	
-	i = validTetriminos3(str);
+
+	i = valid_tetriminos3(str);
 	if (i == 1)
 	{
-		if (validTetriminos2(str) == 1)
+		if (valid_tetriminos2(str, 0, 0) == 1)
 		{
-			ptr = Prepare(str);
+			ptr = prepare(str);
 			return (ptr);
 		}
 		else
-		{
-			ft_putstr("error2\n");
 			return (NULL);
-		}
 	}
-	else 
-	{
-		ft_putstr("error2\n");
+	else
 		return (NULL);
-	}
 }
 
-static t_mas *checkTetrimisions1(int i, char *argv)
+static t_mas	*check_tetrimisions1(int i, char *argv)
 {
 	char *str;
 
 	if ((str = ft_read(argv)) == NULL)
-	{
-		ft_putstr("error1\n");
 		return (NULL);
-	}
-	i = validTetriminos1(str);
-	if ( i == 1)
-		return (checkTetrimisions2(i, str));
+	i = valid_tetriminos1(str);
+	if (i == 1)
+		return (check_tetrimisions2(i, str));
 	else
-	{
-		ft_putstr("error3\n");
 		return (NULL);
-	}
 	return (NULL);
 }
 
-int main (int argc, char **argv)
+int				main(int argc, char **argv)
 {
-    int     i;
-	t_mas   *ptr;
+	int		i;
+	t_mas	*ptr;
 
-    i = 0;
+	i = 0;
 	if (argc == 2)
 	{
-		ptr = checkTetrimisions1(i,argv[1]);
-		if ( ptr == NULL)
+		ptr = check_tetrimisions1(i, argv[1]);
+		if (ptr == NULL)
 		{
 			ft_putstr("error\n");
 			return (0);
 		}
 	}
-	else 
+	else
 	{
-		ft_putstr("error5\n");
+		ft_putstr("error\n");
 		return (0);
 	}
-    i = fillit(ptr);
-    printf("%d", i);
-    return (0);
+	i = fillit(ptr);
+	return (0);
 }

@@ -6,17 +6,17 @@
 /*   By: fshade <fshade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:31:56 by fshade            #+#    #+#             */
-/*   Updated: 2019/02/13 17:32:37 by fshade           ###   ########.fr       */
+/*   Updated: 2019/02/18 18:30:58 by fshade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int     ft_readlen(char *fd)
+static	int	ft_readlen(char *fd)
 {
-	int i;
-	int file;
-	char tmp;
+	int		i;
+	int		file;
+	char	tmp;
 
 	i = 0;
 	file = open(fd, O_RDONLY);
@@ -28,20 +28,20 @@ int     ft_readlen(char *fd)
 	}
 	if (i > 545 || i < 20)
 		return (-1);
-	close (file);
+	close(file);
 	return (i);
 }
 
-char    *ft_read(char *fd)
+char		*ft_read(char *fd)
 {
-	int file;
-	char *str;
-	char tmp;
-	int i;
+	int		file;
+	char	*str;
+	char	tmp;
+	int		i;
 
 	i = 0;
 	if (ft_readlen(fd) == -1)
-		return(NULL);
+		return (NULL);
 	else
 		str = ft_strnew(ft_readlen(fd) + 1);
 	file = open(fd, O_RDONLY);
@@ -49,6 +49,6 @@ char    *ft_read(char *fd)
 	{
 		str[i++] = tmp;
 	}
-	close (file);
+	close(file);
 	return (str);
 }
